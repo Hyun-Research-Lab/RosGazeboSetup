@@ -19,7 +19,7 @@ sudo apt-get install git
 
 #get soures
 mkdir -p ~/workspace/src
-cd ~/workspace/src
+pushd ~/workspace/src
 
 # retrieve all the Ignition libraries sources
 wget https://raw.githubusercontent.com/ignition-tooling/gazebodistro/master/collection-fortress.yaml
@@ -42,10 +42,12 @@ sudo apt-get -y install \
 #assuming not using ubuntu bionic
 
 #Building the Ignition Libraries
-cd ~/workspace/
+pushd ~/workspace/
 colcon graph
 colcon build --merge-install
 . ~/workspace/install/setup.bash
 
 #uninstall
 #rm -rf ~/workspace
+popd
+popd

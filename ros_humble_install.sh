@@ -13,14 +13,15 @@ sudo apt-get install software-properties-common
 sudo add-apt-get-repository universe
 
 #Now add the ROS 2 GPG key with apt-get.
-sudo apt-get update && sudo apt-get install curl
+sudo apt-get update && sudo apt-get install -y curl
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
 #add repository to your sources list
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt-get/sources.list.d/ros2.list > /dev/null
 
 #Install common packages.
-sudo apt-get update && sudo apt-get install -y \
+sudo apt-get update 
+sudo apt-get install -y \
   python3-flake8-docstrings \
   python3-pip \
   python3-pytest-cov \
@@ -52,7 +53,7 @@ sudo apt-get install -y \
 
 #create workspace and clone repos
 mkdir -p ~/ros2_humble/src
-cd ~/ros2_humble
+pushd ~/ros2_humble
 vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos src
 
 #install dependencies
@@ -63,10 +64,12 @@ rosdep update
 rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 
 #build code (takes a while, around 40 min?)
-cd ~/ros2_humble/
+# cd ~/ros2_humble/
 colcon build --symlink-install
 
 #setup environment
 # Replace ".bash" with your shell if you're not using bash
 # Possible values are: setup.bash, setup.sh, setup.zsh
 . ~/ros2_humble/install/local_setup.bash
+
+popd #return to original directory
