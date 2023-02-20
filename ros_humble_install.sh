@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html
 
 

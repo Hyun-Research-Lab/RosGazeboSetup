@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 #https://gazebosim.org/docs/fortress/install_ubuntu_src
 
 #Install tools

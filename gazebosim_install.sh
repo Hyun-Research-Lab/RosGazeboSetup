@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # https://github.com/gazebosim/ros_gz/tree/humble
 
 #Assuming ignition gazebo fortress is installed and ros2 humble is installed

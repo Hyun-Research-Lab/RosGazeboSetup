@@ -6,3 +6,6 @@ run to get executable permission
 
 Run main_install.sh to install all
 `./main_install.sh`
+
+
+# Can run individual files separately if breaks happen, main runs all three in order, Ros, Gazebo, Bridge
