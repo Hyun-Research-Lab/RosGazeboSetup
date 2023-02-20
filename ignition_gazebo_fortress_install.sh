@@ -2,7 +2,7 @@
 #https://gazebosim.org/docs/fortress/install_ubuntu_src
 
 #Install tools
-sudo apt-get install python3-pip wget lsb-release gnupg curl
+sudo apt-get install -y python3-pip wget lsb-release gnupg curl
 
 pip install vcstool || pip3 install vcstool
 pip install -U colcon-common-extensions || pip3 install -U colcon-common-extensions
@@ -15,7 +15,7 @@ pip install -U colcon-common-extensions || pip3 install -U colcon-common-extensi
 # export PATH=$PATH:$HOME/.local/bin/
 
 #install git 
-sudo apt-get install git
+sudo apt-get install -y git
 
 #get soures
 mkdir -p ~/workspace/src
