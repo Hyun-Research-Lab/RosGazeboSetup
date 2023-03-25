@@ -9,3 +9,18 @@ Run main_install.sh to install all
 
 
 # Can run individual files separately if breaks happen, main runs all three in order, Ros, Gazebo, Bridge
+
+
+# insert into bashrc
+
+assumes inclusion of drake
+```
+export PATH=$PATH:/home/tsai169/.local/bin
+export PATH="/opt/drake/bin${PATH:+:${PATH}}"
+export PYTHONPATH="/opt/drake/lib/python$(python3 -c 'import sys; print("{0}.{1}".format(*sys.version_info))')/site-packages${PYTHONPATH:+:${PYTHONPATH}}"
+source /opt/ros/humble/setup.bash
+source ~/drake/install/setup.bash
+. ~/ros2_humble/install/local_setup.bash
+. ~/ws/install/local_setup.bash
+. ~/main_workspace/install/local_setup.bash
+```
