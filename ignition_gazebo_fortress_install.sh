@@ -1,4 +1,20 @@
 #!/usr/bin/bash
+set -e
+# https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html
+
+if [ $EUID != 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+if [ -z "$1" ]; then
+    echo "Base path not provided"
+    exit 1
+fi
+echo "Base path: $1"
+
+echo "Installing Ignition Gazebo 6"
+
 #https://gazebosim.org/docs/fortress/install_ubuntu_src
 
 #Install tools
@@ -18,8 +34,10 @@ pip install -U colcon-common-extensions || pip3 install -U colcon-common-extensi
 sudo apt-get install -y git
 
 #get soures
-mkdir -p ~/workspace/src
-pushd ~/workspace/src
+echo "making dir"
+mkdir -p $1/ign_ws/src
+echo "dir made"
+pushd $1/ign_ws/src
 
 # retrieve all the Ignition libraries sources
 wget https://raw.githubusercontent.com/ignition-tooling/gazebodistro/master/collection-fortress.yaml
@@ -42,12 +60,14 @@ sudo apt-get -y install \
 #assuming not using ubuntu bionic
 
 #Building the Ignition Libraries
-pushd ~/workspace/
+pushd $1/ign_ws/
 colcon graph
 colcon build --merge-install
-. ~/workspace/install/setup.bash
+. $1/ign_ws/install/setup.bash
 
 #uninstall
-#rm -rf ~/workspace
+#rm -rf ~/$1/ign_ws/
 popd
 popd
+
+echo "Ignition Gazebo 6 installed"
