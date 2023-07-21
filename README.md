@@ -45,6 +45,7 @@ source ~/drake/install/setup.bash
 . ~/ws/install/local_setup.bash
 . ~/main_workspace/install/local_setup.bash
 ```
+The source /opt/ros is created by the bridge
 
 If install files are locked behind sudo perms and not user perms:
 `sudo chmod -R a+rwx <file path>`
